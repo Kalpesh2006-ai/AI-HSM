@@ -1,0 +1,123 @@
+
+# ==============================
+# SECRETS AND ENVIRONMENT FILES
+# ==============================
+.env
+.env.*
+!.env.example
+!.env.template
+*.pem
+*.key
+secrets/
+credentials/
+service-account*.json
+
+# ==============================
+# PYTHON VIRTUAL ENVIRONMENTS
+# ==============================
+.venv/
+venv/
+env/
+ENV/
+
+# ==============================
+# PYTHON CACHE AND BUILD FILES
+# ==============================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ==============================
+# JUPYTER
+# ==============================
+.ipynb_checkpoints/
+
+# ==============================
+# RAG: GENERATED VECTOR DATABASES
+# ==============================
+rag/vector_db/
+rag/embeddings/
+rag/**/vector_db/
+rag/**/embeddings/
+chroma_db/
+chroma.sqlite3
+*.parquet
+
+# ==============================
+# RAG: GENERATED PROCESSED DATA
+# ==============================
+rag/processed/
+rag/**/processed_data/
+rag/**/extracted_text/
+rag/**/cleaned_text/
+rag/**/chunks/
+*.pkl
+*.pickle
+*.joblib
+
+# ==============================
+# LOGS AND TEMPORARY FILES
+# ==============================
+logs/
+rag/logs/
+*.log
+*.tmp
+*.temp
+temp/
+tmp/
+.cache/
+
+# ==============================
+# NODE.JS / REACT / FRONTEND
+# ==============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+.npm/
+.parcel-cache/
+.next/
+.nuxt/
+dist/
+coverage/
+
+# ==============================
+# BUILD AND DEPLOYMENT SECRETS
+# ==============================
+.vercel/
+.netlify/
+.firebase/
+*.local
+
+# ==============================
+# IDE AND OPERATING SYSTEM
+# ==============================
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==============================
+# TEST AND TOOL OUTPUTS
+# ==============================
+.pyre/
+.tox/
+.nox/
+```
+# Generated audio and local backups
+ai/speech/*.wav
+*.backup
+*.bak

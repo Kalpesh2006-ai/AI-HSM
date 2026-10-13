@@ -1,0 +1,708 @@
+[
+  {
+    "id": 1,
+    "domain": "Government Schemes",
+    "question": "What is a government scheme?",
+    "answer": "A government scheme is a programme introduced by the Central or State Government to provide eligible people with support such as loans, subsidies, training, financial assistance, or other benefits.",
+    "keywords": ["government scheme", "government support", "benefits"]
+  },
+  {
+    "id": 2,
+    "domain": "Government Schemes",
+    "question": "Are there government schemes for women entrepreneurs?",
+    "answer": "Yes. The Central and State Governments have programmes that support women through entrepreneurship, credit, training, livelihoods, and business development.",
+    "keywords": ["women", "entrepreneur", "government scheme", "business"]
+  },
+  {
+    "id": 3,
+    "domain": "Government Schemes",
+    "question": "Are government schemes available for rural women?",
+    "answer": "Yes. Several government programmes support rural women through Self Help Groups, livelihoods, entrepreneurship, financial inclusion, and training.",
+    "keywords": ["rural women", "SHG", "entrepreneurship", "financial inclusion"]
+  },
+  {
+    "id": 4,
+    "domain": "Government Schemes",
+    "question": "Can a woman apply for a government business scheme?",
+    "answer": "Yes, if she meets the eligibility requirements of the particular scheme. Requirements can include age, business type, location, income, category, or existing business status.",
+    "keywords": ["women", "business scheme", "eligibility"]
+  },
+  {
+    "id": 5,
+    "domain": "Government Schemes",
+    "question": "Are there schemes for starting a new business?",
+    "answer": "Yes. Several government programmes support new businesses through loans, subsidies, training, credit guarantees, and entrepreneurship support.",
+    "keywords": ["new business", "startup", "government support"]
+  },
+  {
+    "id": 6,
+    "domain": "Government Schemes",
+    "question": "Are there government schemes for existing businesses?",
+    "answer": "Yes. Some programmes support existing businesses through expansion finance, formalisation, technology, training, credit, and marketing support.",
+    "keywords": ["existing business", "business expansion", "government scheme"]
+  },
+  {
+    "id": 7,
+    "domain": "Government Schemes",
+    "question": "Can I get a government loan to start a business?",
+    "answer": "Some government schemes facilitate business loans through banks and other lending institutions. Approval depends on the scheme, applicant, project, and lending institution.",
+    "keywords": ["business loan", "government loan", "bank"]
+  },
+  {
+    "id": 8,
+    "domain": "Government Schemes",
+    "question": "Does every government scheme provide free money?",
+    "answer": "No. Government programmes can provide loans, subsidies, grants, credit guarantees, training, or other forms of support.",
+    "keywords": ["grant", "loan", "subsidy", "government support"]
+  },
+  {
+    "id": 9,
+    "domain": "Government Schemes",
+    "question": "Does the government directly provide every business loan?",
+    "answer": "No. Many schemes operate through banks, financial institutions, government departments, or implementing agencies.",
+    "keywords": ["business loan", "bank", "government"]
+  },
+  {
+    "id": 10,
+    "domain": "Government Schemes",
+    "question": "How can I find a government scheme suitable for my business?",
+    "answer": "You should compare your age, location, business type, business stage, funding requirement, and other eligibility conditions with official scheme guidelines.",
+    "keywords": ["find scheme", "eligibility", "business"]
+  },
+  {
+    "id": 11,
+    "domain": "Government Schemes",
+    "question": "Can I apply for more than one government scheme?",
+    "answer": "It depends on the rules of the individual schemes. Some schemes may restrict benefits if you have already received assistance under another programme.",
+    "keywords": ["multiple schemes", "eligibility", "government benefits"]
+  },
+  {
+    "id": 12,
+    "domain": "Government Schemes",
+    "question": "Where can I find official government scheme information?",
+    "answer": "Official information can be found on Central and State Government websites, ministry portals, scheme portals, and authorised government offices.",
+    "keywords": ["official website", "government information", "scheme"]
+  },
+  {
+    "id": 13,
+    "domain": "Government Schemes",
+    "question": "Can government scheme rules change?",
+    "answer": "Yes. Eligibility, benefits, application procedures, and scheme periods can change, so current official information should always be checked.",
+    "keywords": ["scheme update", "government rules", "eligibility"]
+  },
+  {
+    "id": 14,
+    "domain": "Government Schemes",
+    "question": "Should I trust a WhatsApp message about a government scheme?",
+    "answer": "Do not rely on an unverified message. Check the information through an official government website or authorised government office before applying or making any payment.",
+    "keywords": ["WhatsApp scam", "government scheme", "fraud"]
+  },
+  {
+    "id": 15,
+    "domain": "Government Schemes",
+    "question": "Can AI-HSM tell me if I am eligible for a scheme?",
+    "answer": "AI-HSM can provide preliminary guidance using official eligibility criteria, but the final decision is made by the relevant government authority, bank, or implementing agency.",
+    "keywords": ["AI-HSM", "eligibility", "government scheme"]
+  },
+
+  {
+    "id": 16,
+    "domain": "Government Schemes",
+    "question": "What is PMEGP?",
+    "answer": "PMEGP stands for Prime Minister's Employment Generation Programme. It supports eligible entrepreneurs in establishing new micro-enterprises in the non-farm sector.",
+    "keywords": ["PMEGP", "micro enterprise", "business"]
+  },
+  {
+    "id": 17,
+    "domain": "Government Schemes",
+    "question": "What is the main purpose of PMEGP?",
+    "answer": "The main purpose of PMEGP is to generate employment by supporting eligible new self-employment ventures and micro-enterprises.",
+    "keywords": ["PMEGP", "employment", "self employment"]
+  },
+  {
+    "id": 18,
+    "domain": "Government Schemes",
+    "question": "Can women apply for PMEGP?",
+    "answer": "Yes. Women entrepreneurs can be beneficiaries of PMEGP if they satisfy the scheme's eligibility conditions.",
+    "keywords": ["PMEGP", "women", "eligibility"]
+  },
+  {
+    "id": 19,
+    "domain": "Government Schemes",
+    "question": "Can a rural woman apply for PMEGP?",
+    "answer": "Yes. PMEGP supports eligible new micro-enterprises in both rural and urban areas.",
+    "keywords": ["PMEGP", "rural woman", "micro enterprise"]
+  },
+  {
+    "id": 20,
+    "domain": "Government Schemes",
+    "question": "What is the minimum age for PMEGP?",
+    "answer": "An individual beneficiary must be above 18 years of age for a new PMEGP enterprise.",
+    "keywords": ["PMEGP", "age", "eligibility"]
+  },
+  {
+    "id": 21,
+    "domain": "Government Schemes",
+    "question": "Is there an income limit for PMEGP?",
+    "answer": "The official PMEGP eligibility information states that there is no income ceiling for assistance for setting up projects under the scheme.",
+    "keywords": ["PMEGP", "income", "eligibility"]
+  },
+  {
+    "id": 22,
+    "domain": "Government Schemes",
+    "question": "Is education qualification required for PMEGP?",
+    "answer": "For projects above the specified project-cost limits, the applicant must have passed at least VIII standard. The exact limits should be checked in the current PMEGP guidelines.",
+    "keywords": ["PMEGP", "education", "qualification"]
+  },
+  {
+    "id": 23,
+    "domain": "Government Schemes",
+    "question": "Can an existing business apply for PMEGP as a new project?",
+    "answer": "PMEGP assistance for new enterprises is intended for new projects. Existing units that fall under the scheme's exclusion conditions are not eligible for new-project assistance.",
+    "keywords": ["PMEGP", "existing business", "new enterprise"]
+  },
+  {
+    "id": 24,
+    "domain": "Government Schemes",
+    "question": "Can PMEGP support a manufacturing business?",
+    "answer": "Yes. Eligible new micro-enterprises in the manufacturing sector can receive support under PMEGP subject to scheme conditions.",
+    "keywords": ["PMEGP", "manufacturing", "business"]
+  },
+  {
+    "id": 25,
+    "domain": "Government Schemes",
+    "question": "Can PMEGP support a service business?",
+    "answer": "Yes. Eligible new micro-enterprises in the business and service sector can be supported under PMEGP.",
+    "keywords": ["PMEGP", "service business", "enterprise"]
+  },
+  {
+    "id": 26,
+    "domain": "Government Schemes",
+    "question": "Can PMEGP support a village business?",
+    "answer": "Yes. PMEGP aims to support employment-generating micro-enterprises in rural and urban areas, including eligible village industries.",
+    "keywords": ["PMEGP", "village business", "rural"]
+  },
+  {
+    "id": 27,
+    "domain": "Government Schemes",
+    "question": "Can land cost be included in a PMEGP project?",
+    "answer": "The cost of land should not be included in the PMEGP project cost. Certain ready-built or leased work-shed costs may be included according to scheme conditions.",
+    "keywords": ["PMEGP", "land", "project cost"]
+  },
+  {
+    "id": 28,
+    "domain": "Government Schemes",
+    "question": "Can PMEGP finance every type of business?",
+    "answer": "No. Only eligible activities can be supported. Activities included in the scheme's negative list or otherwise prohibited are excluded.",
+    "keywords": ["PMEGP", "eligible activities", "negative list"]
+  },
+  {
+    "id": 29,
+    "domain": "Government Schemes",
+    "question": "Can two members of the same family receive PMEGP assistance for new enterprises?",
+    "answer": "For new enterprises, PMEGP allows only one person from one family to receive financial assistance. The scheme defines family according to its guidelines.",
+    "keywords": ["PMEGP", "family", "eligibility"]
+  },
+  {
+    "id": 30,
+    "domain": "Government Schemes",
+    "question": "Is Udyam registration required for PMEGP?",
+    "answer": "New units established under PMEGP are required to be registered on the Udyam Portal before physical verification and adjustment of margin money.",
+    "keywords": ["PMEGP", "Udyam", "registration"]
+  },
+  {
+    "id": 31,
+    "domain": "Government Schemes",
+    "question": "Can an existing PMEGP unit receive assistance for upgrading?",
+    "answer": "Certain existing PMEGP, REGP, or MUDRA-financed units may be eligible for upgradation if they satisfy the applicable conditions.",
+    "keywords": ["PMEGP", "upgradation", "existing unit"]
+  },
+  {
+    "id": 32,
+    "domain": "Government Schemes",
+    "question": "Does PMEGP support rural entrepreneurs?",
+    "answer": "Yes. PMEGP supports eligible employment-generating micro-enterprises in rural as well as urban areas.",
+    "keywords": ["PMEGP", "rural entrepreneur", "employment"]
+  },
+  {
+    "id": 33,
+    "domain": "Government Schemes",
+    "question": "Is PMEGP only for unemployed people?",
+    "answer": "PMEGP focuses on eligible beneficiaries establishing new enterprises. It does not impose an income ceiling, but applicants must meet the scheme's other conditions.",
+    "keywords": ["PMEGP", "unemployed", "eligibility"]
+  },
+  {
+    "id": 34,
+    "domain": "Government Schemes",
+    "question": "Is PMEGP information available in Marathi?",
+    "answer": "Yes. The PMEGP portal provides regional-language resources, including Marathi material.",
+    "keywords": ["PMEGP", "Marathi", "language"]
+  },
+  {
+    "id": 35,
+    "domain": "Government Schemes",
+    "question": "Where can I get PMEGP information?",
+    "answer": "PMEGP information is available through the official PMEGP portal and Ministry of MSME resources.",
+    "keywords": ["PMEGP", "Ministry of MSME", "official portal"]
+  },
+
+  {
+    "id": 36,
+    "domain": "Government Schemes",
+    "question": "What is PMMY?",
+    "answer": "PMMY stands for Pradhan Mantri MUDRA Yojana. It provides institutional collateral-free credit to eligible micro enterprises.",
+    "keywords": ["PMMY", "MUDRA", "business loan"]
+  },
+  {
+    "id": 37,
+    "domain": "Government Schemes",
+    "question": "Can women get loans under MUDRA?",
+    "answer": "Yes. Women entrepreneurs can obtain MUDRA loans if they meet the lending institution's and scheme's applicable requirements.",
+    "keywords": ["MUDRA", "women", "business loan"]
+  },
+  {
+    "id": 38,
+    "domain": "Government Schemes",
+    "question": "What businesses can receive MUDRA loans?",
+    "answer": "MUDRA supports eligible micro enterprises in non-agricultural activities and certain activities allied to agriculture, such as poultry, dairy, and beekeeping.",
+    "keywords": ["MUDRA", "micro enterprise", "poultry", "dairy"]
+  },
+  {
+    "id": 39,
+    "domain": "Government Schemes",
+    "question": "What is the Shishu category under MUDRA?",
+    "answer": "Shishu is the MUDRA category for loans up to ₹50,000.",
+    "keywords": ["MUDRA", "Shishu", "loan"]
+  },
+  {
+    "id": 40,
+    "domain": "Government Schemes",
+    "question": "What is the Kishore category under MUDRA?",
+    "answer": "Kishore covers MUDRA loans above ₹50,000 and up to ₹5 lakh.",
+    "keywords": ["MUDRA", "Kishore", "loan"]
+  },
+  {
+    "id": 41,
+    "domain": "Government Schemes",
+    "question": "What is the Tarun category under MUDRA?",
+    "answer": "Tarun covers MUDRA loans above ₹5 lakh and up to ₹10 lakh.",
+    "keywords": ["MUDRA", "Tarun", "loan"]
+  },
+  {
+    "id": 42,
+    "domain": "Government Schemes",
+    "question": "What is Tarun Plus under MUDRA?",
+    "answer": "Tarun Plus covers loans above ₹10 lakh and up to ₹20 lakh for entrepreneurs who have successfully repaid previous Tarun-category loans, subject to applicable conditions.",
+    "keywords": ["MUDRA", "Tarun Plus", "loan"]
+  },
+  {
+    "id": 43,
+    "domain": "Government Schemes",
+    "question": "Is collateral required for a MUDRA loan?",
+    "answer": "The official PMMY information states that collateral is not required for MUDRA loans.",
+    "keywords": ["MUDRA", "collateral", "loan"]
+  },
+  {
+    "id": 44,
+    "domain": "Government Schemes",
+    "question": "Can MUDRA finance working capital?",
+    "answer": "Yes. MUDRA can meet both term-loan and working-capital requirements of eligible micro enterprises.",
+    "keywords": ["MUDRA", "working capital", "loan"]
+  },
+  {
+    "id": 45,
+    "domain": "Government Schemes",
+    "question": "Can I use MUDRA for a dairy business?",
+    "answer": "Dairy is included among activities allied to agriculture that can be covered under MUDRA, subject to eligibility and lending conditions.",
+    "keywords": ["MUDRA", "dairy", "loan"]
+  },
+  {
+    "id": 46,
+    "domain": "Government Schemes",
+    "question": "Can I use MUDRA for poultry?",
+    "answer": "Poultry is included among activities allied to agriculture that can be covered under MUDRA, subject to eligibility and lending conditions.",
+    "keywords": ["MUDRA", "poultry", "loan"]
+  },
+  {
+    "id": 47,
+    "domain": "Government Schemes",
+    "question": "Where can I apply for a MUDRA loan?",
+    "answer": "MUDRA loans are provided through eligible lending institutions such as banks, Regional Rural Banks, Small Finance Banks, NBFCs, and Micro Finance Institutions.",
+    "keywords": ["MUDRA", "apply", "bank", "loan"]
+  },
+  {
+    "id": 48,
+    "domain": "Government Schemes",
+    "question": "Can a small shop owner apply for MUDRA?",
+    "answer": "An eligible small business can apply for MUDRA through a participating lending institution, subject to the applicable requirements.",
+    "keywords": ["MUDRA", "shop", "small business"]
+  },
+  {
+    "id": 49,
+    "domain": "Government Schemes",
+    "question": "Can MUDRA be used for a tailoring business?",
+    "answer": "A tailoring business can potentially qualify as a micro enterprise under MUDRA, subject to the lending institution's eligibility and documentation requirements.",
+    "keywords": ["MUDRA", "tailoring", "micro enterprise"]
+  },
+  {
+    "id": 50,
+    "domain": "Government Schemes",
+    "question": "Can MUDRA be used for a food business?",
+    "answer": "An eligible micro food-related business may obtain MUDRA credit subject to the scheme and lending institution's conditions.",
+    "keywords": ["MUDRA", "food business", "loan"]
+  },
+
+  {
+    "id": 51,
+    "domain": "Government Schemes",
+    "question": "What is DAY-NRLM?",
+    "answer": "DAY-NRLM stands for Deendayal Antyodaya Yojana–National Rural Livelihoods Mission. It focuses on improving rural livelihoods, especially by organising rural women into Self Help Groups.",
+    "keywords": ["DAY-NRLM", "rural women", "SHG"]
+  },
+  {
+    "id": 52,
+    "domain": "Government Schemes",
+    "question": "What is an SHG?",
+    "answer": "SHG stands for Self Help Group. It is a community-based group through which members can save money, access financial services, and undertake livelihood activities.",
+    "keywords": ["SHG", "Self Help Group", "women"]
+  },
+  {
+    "id": 53,
+    "domain": "Government Schemes",
+    "question": "Is DAY-NRLM useful for rural women?",
+    "answer": "Yes. DAY-NRLM is specifically focused on rural livelihoods and organises rural women into Self Help Groups while supporting financial inclusion and income-generating activities.",
+    "keywords": ["DAY-NRLM", "rural women", "livelihood"]
+  },
+  {
+    "id": 54,
+    "domain": "Government Schemes",
+    "question": "Can women entrepreneurs benefit from DAY-NRLM?",
+    "answer": "Yes. DAY-NRLM supports livelihoods, micro-enterprises, financial inclusion, training, and entrepreneurship among rural women.",
+    "keywords": ["DAY-NRLM", "women entrepreneur", "enterprise"]
+  },
+  {
+    "id": 55,
+    "domain": "Government Schemes",
+    "question": "Does DAY-NRLM provide financial support to SHGs?",
+    "answer": "Yes. DAY-NRLM provides forms of capitalization support such as Revolving Funds and Community Investment Funds to eligible SHGs and their federations.",
+    "keywords": ["DAY-NRLM", "SHG", "Revolving Fund", "CIF"]
+  },
+  {
+    "id": 56,
+    "domain": "Government Schemes",
+    "question": "What is a Revolving Fund under DAY-NRLM?",
+    "answer": "A Revolving Fund is financial support provided to eligible SHGs to strengthen their financial base and support internal lending and livelihood activities.",
+    "keywords": ["Revolving Fund", "DAY-NRLM", "SHG"]
+  },
+  {
+    "id": 57,
+    "domain": "Government Schemes",
+    "question": "What is the Community Investment Fund?",
+    "answer": "The Community Investment Fund is financial support provided through the DAY-NRLM community institution system to help SHGs and their members undertake livelihood and socio-economic activities.",
+    "keywords": ["CIF", "Community Investment Fund", "DAY-NRLM"]
+  },
+  {
+    "id": 58,
+    "domain": "Government Schemes",
+    "question": "Does DAY-NRLM help women access bank credit?",
+    "answer": "Yes. DAY-NRLM promotes institutional credit access and bank linkage for rural women Self Help Groups.",
+    "keywords": ["DAY-NRLM", "bank credit", "SHG"]
+  },
+  {
+    "id": 59,
+    "domain": "Government Schemes",
+    "question": "What is a Bank Sakhi?",
+    "answer": "A Bank Sakhi is a community-level resource who helps SHG members with banking and credit-related processes.",
+    "keywords": ["Bank Sakhi", "SHG", "banking"]
+  },
+  {
+    "id": 60,
+    "domain": "Government Schemes",
+    "question": "Can a Bank Sakhi help with an SHG loan application?",
+    "answer": "Yes. Bank Sakhis can help eligible SHGs with loan applications and banking processes and may follow up with banks.",
+    "keywords": ["Bank Sakhi", "SHG loan", "bank"]
+  },
+  {
+    "id": 61,
+    "domain": "Government Schemes",
+    "question": "Does DAY-NRLM provide financial literacy?",
+    "answer": "Yes. DAY-NRLM provides financial literacy covering areas such as financial planning, savings, credit, insurance, pension, enterprise financing, and business correspondence.",
+    "keywords": ["DAY-NRLM", "financial literacy", "training"]
+  },
+  {
+    "id": 62,
+    "domain": "Government Schemes",
+    "question": "Can DAY-NRLM help women start enterprises?",
+    "answer": "Yes. Enterprise and livelihood promotion are important parts of DAY-NRLM, including support for micro-enterprises and entrepreneurship.",
+    "keywords": ["DAY-NRLM", "enterprise", "women"]
+  },
+  {
+    "id": 63,
+    "domain": "Government Schemes",
+    "question": "Can an SHG receive government support for a business?",
+    "answer": "Eligible SHGs can receive different forms of support depending on the government programme and its eligibility conditions.",
+    "keywords": ["SHG", "business", "government support"]
+  },
+  {
+    "id": 64,
+    "domain": "Government Schemes",
+    "question": "Is DAY-NRLM available in Maharashtra?",
+    "answer": "Yes. DAY-NRLM is implemented across India except Delhi and Chandigarh, so Maharashtra is covered.",
+    "keywords": ["DAY-NRLM", "Maharashtra", "SHG"]
+  },
+  {
+    "id": 65,
+    "domain": "Government Schemes",
+    "question": "Where can rural women get information about SHG support?",
+    "answer": "Women can approach their SHG, village-level community institution, State Rural Livelihoods Mission, block or district mission office, or official government channels.",
+    "keywords": ["SHG", "rural women", "government office"]
+  },
+
+  {
+    "id": 66,
+    "domain": "Government Schemes",
+    "question": "What is PM Vishwakarma?",
+    "answer": "PM Vishwakarma is a Central Government scheme providing support to traditional artisans and craftspeople who work with their hands and tools.",
+    "keywords": ["PM Vishwakarma", "artisan", "craftsperson"]
+  },
+  {
+    "id": 67,
+    "domain": "Government Schemes",
+    "question": "When was PM Vishwakarma launched?",
+    "answer": "PM Vishwakarma was launched on 17 September 2023.",
+    "keywords": ["PM Vishwakarma", "launch", "2023"]
+  },
+  {
+    "id": 68,
+    "domain": "Government Schemes",
+    "question": "Can women artisans benefit from PM Vishwakarma?",
+    "answer": "Yes. Eligible women working in one of the covered traditional trades can benefit from PM Vishwakarma.",
+    "keywords": ["PM Vishwakarma", "women artisan", "trades"]
+  },
+  {
+    "id": 69,
+    "domain": "Government Schemes",
+    "question": "How many trades are covered under PM Vishwakarma?",
+    "answer": "PM Vishwakarma covers 18 traditional trades.",
+    "keywords": ["PM Vishwakarma", "18 trades", "artisan"]
+  },
+  {
+    "id": 70,
+    "domain": "Government Schemes",
+    "question": "Is tailoring covered under PM Vishwakarma?",
+    "answer": "Yes. Tailor is one of the 18 traditional trades covered under PM Vishwakarma.",
+    "keywords": ["PM Vishwakarma", "tailor", "trade"]
+  },
+  {
+    "id": 71,
+    "domain": "Government Schemes",
+    "question": "Is pottery covered under PM Vishwakarma?",
+    "answer": "Yes. Potter is one of the traditional trades covered under PM Vishwakarma.",
+    "keywords": ["PM Vishwakarma", "potter", "trade"]
+  },
+  {
+    "id": 72,
+    "domain": "Government Schemes",
+    "question": "Is basket or mat making covered under PM Vishwakarma?",
+    "answer": "Yes. Basket, mat, broom making, and coir weaving are included among the covered trades.",
+    "keywords": ["PM Vishwakarma", "basket", "mat", "coir"]
+  },
+  {
+    "id": 73,
+    "domain": "Government Schemes",
+    "question": "Is carpentry covered under PM Vishwakarma?",
+    "answer": "Yes. Carpenter is one of the 18 trades covered under PM Vishwakarma.",
+    "keywords": ["PM Vishwakarma", "carpenter", "trade"]
+  },
+  {
+    "id": 74,
+    "domain": "Government Schemes",
+    "question": "Does PM Vishwakarma provide skill training?",
+    "answer": "Yes. The scheme includes basic and advanced skill training for eligible beneficiaries.",
+    "keywords": ["PM Vishwakarma", "training", "skills"]
+  },
+  {
+    "id": 75,
+    "domain": "Government Schemes",
+    "question": "Does PM Vishwakarma provide a certificate?",
+    "answer": "Yes. Recognised beneficiaries receive a PM Vishwakarma Certificate and ID Card.",
+    "keywords": ["PM Vishwakarma", "certificate", "ID card"]
+  },
+  {
+    "id": 76,
+    "domain": "Government Schemes",
+    "question": "Does PM Vishwakarma provide a toolkit incentive?",
+    "answer": "Yes. The scheme provides a toolkit incentive of up to ₹15,000 through e-vouchers, subject to scheme conditions.",
+    "keywords": ["PM Vishwakarma", "toolkit", "₹15000"]
+  },
+  {
+    "id": 77,
+    "domain": "Government Schemes",
+    "question": "Does PM Vishwakarma provide business loans?",
+    "answer": "Yes. The scheme provides collateral-free enterprise development credit support in two tranches, subject to eligibility and repayment conditions.",
+    "keywords": ["PM Vishwakarma", "loan", "credit"]
+  },
+  {
+    "id": 78,
+    "domain": "Government Schemes",
+    "question": "What is the interest rate under PM Vishwakarma credit support?",
+    "answer": "The concessional interest rate for PM Vishwakarma credit support is 5 percent, subject to the scheme's conditions.",
+    "keywords": ["PM Vishwakarma", "interest rate", "5 percent"]
+  },
+  {
+    "id": 79,
+    "domain": "Government Schemes",
+    "question": "Does PM Vishwakarma support digital transactions?",
+    "answer": "Yes. Incentives for digital transactions are included as a component of PM Vishwakarma.",
+    "keywords": ["PM Vishwakarma", "digital transaction", "UPI"]
+  },
+  {
+    "id": 80,
+    "domain": "Government Schemes",
+    "question": "Does PM Vishwakarma provide marketing support?",
+    "answer": "Yes. The scheme provides marketing support, including opportunities such as trade fairs and exhibitions.",
+    "keywords": ["PM Vishwakarma", "marketing", "trade fair"]
+  },
+
+  {
+    "id": 81,
+    "domain": "Government Schemes",
+    "question": "What is PMFME?",
+    "answer": "PMFME stands for Pradhan Mantri Formalisation of Micro Food Processing Enterprises Scheme. It supports the formalisation and development of micro food-processing enterprises.",
+    "keywords": ["PMFME", "food processing", "micro enterprise"]
+  },
+  {
+    "id": 82,
+    "domain": "Government Schemes",
+    "question": "Is PMFME useful for women running food businesses?",
+    "answer": "Yes. PMFME provides support to eligible food-processing enterprises and includes specific support for Self Help Groups.",
+    "keywords": ["PMFME", "women", "food business", "SHG"]
+  },
+  {
+    "id": 83,
+    "domain": "Government Schemes",
+    "question": "Can PMFME support a pickle business?",
+    "answer": "An eligible micro food-processing enterprise such as a pickle business may receive support under PMFME subject to applicable conditions.",
+    "keywords": ["PMFME", "pickle", "food processing"]
+  },
+  {
+    "id": 84,
+    "domain": "Government Schemes",
+    "question": "Can PMFME support an existing food-processing business?",
+    "answer": "Yes. PMFME was designed in part to improve the competitiveness and formalisation of existing micro food-processing enterprises.",
+    "keywords": ["PMFME", "existing business", "food processing"]
+  },
+  {
+    "id": 85,
+    "domain": "Government Schemes",
+    "question": "What subsidy is available under PMFME for eligible individual units?",
+    "answer": "The official PMFME information states a credit-linked capital subsidy of 35 percent of eligible project cost, with a maximum of ₹10 lakh per unit, subject to scheme conditions.",
+    "keywords": ["PMFME", "35 percent", "₹10 lakh", "subsidy"]
+  },
+  {
+    "id": 86,
+    "domain": "Government Schemes",
+    "question": "Does PMFME support SHGs?",
+    "answer": "Yes. PMFME provides support to eligible Self Help Groups and their members involved in food processing.",
+    "keywords": ["PMFME", "SHG", "food processing"]
+  },
+  {
+    "id": 87,
+    "domain": "Government Schemes",
+    "question": "How much seed capital is available to eligible SHG members under PMFME?",
+    "answer": "The official PMFME information states that ₹40,000 per eligible SHG member can be provided for working capital and purchase of small tools, subject to scheme conditions.",
+    "keywords": ["PMFME", "seed capital", "₹40000", "SHG"]
+  },
+  {
+    "id": 88,
+    "domain": "Government Schemes",
+    "question": "Does PMFME provide marketing and branding support?",
+    "answer": "Yes. PMFME includes support for branding and marketing of eligible food-processing products through specified groups and arrangements.",
+    "keywords": ["PMFME", "marketing", "branding"]
+  },
+  {
+    "id": 89,
+    "domain": "Government Schemes",
+    "question": "Does PMFME provide training?",
+    "answer": "Yes. PMFME includes capacity-building and training support for eligible beneficiaries and groups.",
+    "keywords": ["PMFME", "training", "capacity building"]
+  },
+  {
+    "id": 90,
+    "domain": "Government Schemes",
+    "question": "What is ODOP under PMFME?",
+    "answer": "ODOP stands for One District One Product. It is an approach used to support scale, procurement, common services, value-chain development, and marketing around identified products.",
+    "keywords": ["PMFME", "ODOP", "One District One Product"]
+  },
+
+  {
+    "id": 91,
+    "domain": "Government Schemes",
+    "question": "What is CGTMSE?",
+    "answer": "CGTMSE stands for Credit Guarantee Fund Trust for Micro and Small Enterprises. It supports credit flow to eligible micro and small enterprises through credit guarantees to lending institutions.",
+    "keywords": ["CGTMSE", "credit guarantee", "MSME"]
+  },
+  {
+    "id": 92,
+    "domain": "Government Schemes",
+    "question": "Does CGTMSE provide loans directly to women?",
+    "answer": "No. CGTMSE primarily provides a credit guarantee to eligible lending institutions. The loan is provided by the lending institution.",
+    "keywords": ["CGTMSE", "loan", "credit guarantee"]
+  },
+  {
+    "id": 93,
+    "domain": "Government Schemes",
+    "question": "Can women-led businesses benefit from CGTMSE?",
+    "answer": "Yes. The credit guarantee framework provides enhanced support for eligible women-led micro and small enterprises.",
+    "keywords": ["CGTMSE", "women-led business", "MSME"]
+  },
+  {
+    "id": 94,
+    "domain": "Government Schemes",
+    "question": "Is collateral required under CGTMSE?",
+    "answer": "The Credit Guarantee Scheme is designed to support eligible credit without collateral security or third-party guarantees, subject to applicable conditions.",
+    "keywords": ["CGTMSE", "collateral", "loan"]
+  },
+  {
+    "id": 95,
+    "domain": "Government Schemes",
+    "question": "What is the current credit guarantee ceiling under CGTMSE?",
+    "answer": "The current scheme framework provides credit guarantee support for credit facilities up to ₹10 crore to eligible micro and small enterprises, subject to applicable conditions.",
+    "keywords": ["CGTMSE", "₹10 crore", "credit guarantee"]
+  },
+  {
+    "id": 96,
+    "domain": "Government Schemes",
+    "question": "Does the government give the CGTMSE loan directly?",
+    "answer": "No. CGTMSE provides a guarantee to eligible lending institutions. The actual credit facility is provided by the lender.",
+    "keywords": ["CGTMSE", "loan", "lender"]
+  },
+  {
+    "id": 97,
+    "domain": "Government Schemes",
+    "question": "Can a first-time entrepreneur benefit from a credit guarantee?",
+    "answer": "Eligible first-time entrepreneurs may benefit from credit guarantee-supported lending if they meet the requirements of the scheme and lending institution.",
+    "keywords": ["first-time entrepreneur", "credit guarantee", "MSME"]
+  },
+  {
+    "id": 98,
+    "domain": "Government Schemes",
+    "question": "Are there government programmes specifically supporting rural women through entrepreneurship?",
+    "answer": "Yes. Programmes such as DAY-NRLM support rural women through Self Help Groups, financial inclusion, livelihoods, enterprise development, training, and access to credit.",
+    "keywords": ["rural women", "entrepreneurship", "DAY-NRLM", "SHG"]
+  },
+  {
+    "id": 99,
+    "domain": "Government Schemes",
+    "question": "Are there government programmes for women entrepreneurs in Maharashtra?",
+    "answer": "Yes. Maharashtra has government departments and development organisations that implement programmes related to entrepreneurship, MSMEs, skill development, finance, and women-led enterprises. The suitable programme depends on the applicant and business.",
+    "keywords": ["Maharashtra", "women entrepreneur", "government scheme", "MSME"]
+  },
+  {
+    "id": 100,
+    "domain": "Government Schemes",
+    "question": "How can AI-HSM find the most suitable government scheme for me?",
+    "answer": "AI-HSM should first ask about your age, district, business type, whether the business is new or existing, SHG membership, artisan status, food-processing activity, funding requirement, and other relevant details. It can then retrieve matching information from verified government sources and explain the eligibility and application process.",
+    "keywords": ["AI-HSM", "scheme recommendation", "eligibility", "government scheme"]
+  }
+]
