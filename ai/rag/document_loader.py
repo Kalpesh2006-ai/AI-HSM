@@ -1,4 +1,6 @@
+
 from pathlib import Path
+
 import fitz
 import pytesseract
 
@@ -8,7 +10,7 @@ from PIL import Image
 from ai.rag.config import DOCUMENTS_PATH
 
 
-# Government schemes currently supported
+# Government schemes with dedicated folders
 KNOWN_GOVERNMENT_SCHEMES = {
     "mudra",
     "pmegp",
@@ -16,22 +18,24 @@ KNOWN_GOVERNMENT_SCHEMES = {
     "pmfme",
     "day_nrlm",
     "cgtmse",
-    "maharashtra_schemes"
+    "maharashtra_schemes",
 }
 
 
-# Future knowledge-base categories
+# General knowledge categories in the documents directory
 KNOWN_CATEGORIES = {
     "entrepreneurship",
     "digital_skills",
     "digital_marketing",
     "financial_literacy",
     "business_compliance",
-    "maharashtra"
+    "cybersecurity",
+    "other_government_schemes",
+    "maharashtra",
 }
 
 
-# Tesseract installation path
+# Configure Tesseract OCR
 pytesseract.pytesseract.tesseract_cmd = (
     r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 )
@@ -39,25 +43,37 @@ pytesseract.pytesseract.tesseract_cmd = (
 
 def get_knowledge_metadata(file_path):
     """
-    Determine the category and topic of a document
-    from its folder structure.
+    Determine category, topic, and scheme from the folder structure.
 
-    Current structure:
+    Expected structure:
         documents/
             mudra/
             pmegp/
-
-    Future structure can be:
-        documents/
-            entrepreneurship/
-                business_planning/
+            day_nrlm/
+            maharashtra_schemes/
             digital_skills/
                 digital_payments/
+                aadhaar_and_digital_identity/
+            business_compliance/
+                gst/
+                income_tax/
+                udyam/
+            cybersecurity/
+            financial_literacy/
+            other_government_schemes/
     """
 
-    relative_path = file_path.relative_to(
-        Path(DOCUMENTS_PATH)
-    )
+    documents_root = Path(DOCUMENTS_PATH).resolve()
+    file_path = Path(file_path).resolve()
+
+    try:
+        relative_path = file_path.relative_to(documents_root)
+    except ValueError:
+        return {
+            "category": "unknown",
+            "topic": "unknown",
+            "scheme": "none",
+        }
 
     parts = relative_path.parts
 
@@ -65,25 +81,23 @@ def get_knowledge_metadata(file_path):
         return {
             "category": "unknown",
             "topic": "unknown",
-            "scheme": "unknown"
+            "scheme": "none",
         }
 
-    first_folder = parts[0]
+    first_folder = parts[0].lower()
 
-    # Current government-scheme structure
+    # Dedicated government scheme folders
     if first_folder in KNOWN_GOVERNMENT_SCHEMES:
-
         return {
             "category": "government_scheme",
             "topic": first_folder,
-            "scheme": first_folder
+            "scheme": first_folder,
         }
 
-    # Future general knowledge structure
+    # General knowledge categories
     if first_folder in KNOWN_CATEGORIES:
-
         topic = (
-            parts[1]
+            parts[1].lower()
             if len(parts) > 1
             else first_folder
         )
@@ -91,158 +105,145 @@ def get_knowledge_metadata(file_path):
         return {
             "category": first_folder,
             "topic": topic,
-            "scheme": "none"
+            "scheme": "none",
         }
 
+    # Handle unrecognized top-level folders
     return {
         "category": "other",
         "topic": first_folder,
-        "scheme": "none"
+        "scheme": "none",
     }
 
 
-def load_documents():
+def extract_pdf_pages(file_path):
+    """
+    Extract text from each PDF page.
+    Use OCR when a page has no extractable text.
+    Return one Document per page.
+    """
 
     documents = []
+    knowledge_metadata = get_knowledge_metadata(file_path)
 
-    documents_path = Path(DOCUMENTS_PATH)
+    try:
+        with fitz.open(file_path) as pdf:
+            for page_number, page in enumerate(pdf, start=1):
+                text = page.get_text().strip()
 
-    if not documents_path.exists():
-
-        print(
-            f"Documents directory not found: "
-            f"{documents_path}"
-        )
-
-        return documents
-
-    for file_path in documents_path.rglob("*"):
-
-        if not file_path.is_file():
-            continue
-
-        knowledge_metadata = get_knowledge_metadata(
-            file_path
-        )
-
-        # -------------------------------------------------
-        # PDF FILES
-        # -------------------------------------------------
-
-        if file_path.suffix.lower() == ".pdf":
-
-            try:
-
-                pdf = fitz.open(file_path)
-
-                for page_number, page in enumerate(
-                    pdf,
-                    start=1
-                ):
-
-                    text = page.get_text().strip()
-
-                    # If normal PDF extraction fails,
-                    # use OCR.
-                    if not text:
-
+                # OCR fallback for scanned pages
+                if not text:
+                    try:
                         pix = page.get_pixmap(
-                            matrix=fitz.Matrix(2, 2)
+                            matrix=fitz.Matrix(2, 2),
+                            alpha=False,
                         )
 
                         image = Image.frombytes(
                             "RGB",
-                            [
-                                pix.width,
-                                pix.height
-                            ],
-                            pix.samples
+                            (pix.width, pix.height),
+                            pix.samples,
                         )
 
                         text = pytesseract.image_to_string(
                             image
                         ).strip()
 
-                    if not text:
+                    except Exception as error:
+                        print(
+                            f"OCR failed for {file_path}, "
+                            f"page {page_number}: {error}"
+                        )
                         continue
 
-                    documents.append(
-                        Document(
-                            page_content=text,
-                            metadata={
-                                "source": str(file_path),
-                                "page": page_number,
-                                "category":
-                                    knowledge_metadata[
-                                        "category"
-                                    ],
-                                "topic":
-                                    knowledge_metadata[
-                                        "topic"
-                                    ],
-                                "scheme":
-                                    knowledge_metadata[
-                                        "scheme"
-                                    ]
-                            }
-                        )
+                if not text:
+                    print(
+                        f"No text extracted from "
+                        f"{file_path}, page {page_number}"
                     )
+                    continue
 
-                pdf.close()
-
-            except Exception as error:
-
-                print(
-                    f"Error reading PDF "
-                    f"{file_path}: {error}"
+                documents.append(
+                    Document(
+                        page_content=text,
+                        metadata={
+                            "source": str(Path(file_path)),
+                            "page": page_number,
+                            **knowledge_metadata,
+                        },
+                    )
                 )
 
-        # -------------------------------------------------
-        # TEXT FILES
-        # -------------------------------------------------
+    except Exception as error:
+        print(f"Error reading PDF {file_path}: {error}")
+
+    return documents
+
+
+def extract_txt_file(file_path):
+    """
+    Extract text from a TXT file.
+    Return one Document for the file.
+    """
+
+    try:
+        text = Path(file_path).read_text(
+            encoding="utf-8"
+        ).strip()
+
+        if not text:
+            return []
+
+        return [
+            Document(
+                page_content=text,
+                metadata={
+                    "source": str(Path(file_path)),
+                    "page": 1,
+                    **get_knowledge_metadata(file_path),
+                },
+            )
+        ]
+
+    except Exception as error:
+        print(f"Error reading TXT {file_path}: {error}")
+        return []
+
+
+def load_documents():
+    """
+    Recursively discover PDF and TXT files in DOCUMENTS_PATH.
+    Supports files in all nested category folders.
+    """
+
+    documents = []
+    documents_path = Path(DOCUMENTS_PATH)
+
+    if not documents_path.exists():
+        print(
+            f"Documents directory not found: "
+            f"{documents_path.resolve()}"
+        )
+        return documents
+
+    # Sort paths for predictable loading order
+    files = sorted(
+        path
+        for path in documents_path.rglob("*")
+        if path.is_file()
+        and path.suffix.lower() in {".pdf", ".txt"}
+    )
+
+    print(f"Documents directory: {documents_path.resolve()}")
+    print(f"PDF/TXT files discovered: {len(files)}")
+
+    for file_path in files:
+        if file_path.suffix.lower() == ".pdf":
+            documents.extend(extract_pdf_pages(file_path))
 
         elif file_path.suffix.lower() == ".txt":
+            documents.extend(extract_txt_file(file_path))
 
-            try:
-
-                text = file_path.read_text(
-                    encoding="utf-8"
-                ).strip()
-
-                if text:
-
-                    documents.append(
-                        Document(
-                            page_content=text,
-                            metadata={
-                                "source": str(file_path),
-                                "page": 1,
-                                "category":
-                                    knowledge_metadata[
-                                        "category"
-                                    ],
-                                "topic":
-                                    knowledge_metadata[
-                                        "topic"
-                                    ],
-                                "scheme":
-                                    knowledge_metadata[
-                                        "scheme"
-                                    ]
-                            }
-                        )
-                    )
-
-            except Exception as error:
-
-                print(
-                    f"Error reading TXT "
-                    f"{file_path}: {error}"
-                )
-
-    print(
-        f"Total documents/pages loaded: "
-        f"{len(documents)}"
-    )
+    print(f"Total documents/pages loaded: {len(documents)}")
 
     return documents

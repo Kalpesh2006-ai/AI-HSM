@@ -1,3 +1,4 @@
+
 from ai.rag.retriever import retrieve_documents
 from ai.llm.llm_service import generate_answer
 
@@ -33,7 +34,6 @@ def ask_question(question):
     context_parts = []
 
     for document in documents:
-
         source = document.metadata.get(
             "source",
             "Unknown source"
@@ -84,8 +84,33 @@ IMPORTANT RULES:
 7. If the context provides statistics, state them accurately.
 8. Do not turn statistics into eligibility rules unless
    the documents explicitly state that rule.
-9. If the documents provide a source/page, use that
-   information as the basis of the answer.
+9. Base the answer on the provided sources and pages.
+10. Copy numerical values accurately from the context.
+    Never add, remove, or change digits.
+11. Preserve Indian numbering format and the units used
+    in the source documents.
+12. Clearly distinguish between "up to", "above", and
+    a numerical range.
+13. Do not invent extra digits when formatting amounts.
+    For example, ten lakh and one rupee is ₹10,00,001,
+    not ₹10,000,001.
+14. If retrieved sources disagree or do not establish
+    an exact amount, explain the uncertainty instead
+    of guessing.
+15. When answering about PMMY, use the retrieved context
+    to identify the four loan categories and their amounts.
+16. Present each loan category only once. Do not include
+    alternative formats, duplicate amounts, or phrases
+    such as "or above..." to restate the same amount.
+17. Use clear, consistent Indian number formatting.
+    For example: ₹50,000, ₹5 lakh, ₹10 lakh, and ₹20 lakh.
+18. Do not change the meaning or boundaries of any loan
+    category when simplifying its amount.
+19. For Tarun Plus eligibility, state the special condition
+    only when supported by the retrieved context.
+20. Do not claim that a source supports a detail unless
+    that detail appears in its provided content.
+
 
 CONTEXT:
 {context}
@@ -109,7 +134,6 @@ ANSWER:
     sources = []
 
     for document in documents:
-
         source = document.metadata.get(
             "source",
             "Unknown source"
@@ -146,7 +170,6 @@ if __name__ == "__main__":
     print("\nSources:")
 
     for source in result["sources"]:
-
         print(
             f"- {source['source']} | "
             f"Page {source['page']}"
