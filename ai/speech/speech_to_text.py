@@ -59,9 +59,10 @@ def load_audio(audio_path):
     return audio
 
 
+
 def transcribe_audio(audio_path, language=None):
     """
-    Convert audio into text using Whisper.
+    Convert audio into text using Faster-Whisper.
     """
 
     print("Loading audio...")
@@ -70,7 +71,17 @@ def transcribe_audio(audio_path, language=None):
 
     print("Audio loaded successfully.")
 
-    # Transcribe the audio
+    # Domain-specific Hindi vocabulary
+    initial_prompt = (
+        "मुद्रा योजना, प्रधानमंत्री मुद्रा योजना, "
+        "प्रधानमंत्री रोजगार सृजन कार्यक्रम, "
+        "महिला उद्यमी, सरकारी योजनाएं, "
+        "प्रधानमंत्री सूक्ष्म खाद्य प्रसंस्करण योजना, "
+        "पीएमएफएमई योजना, प्रधानमंत्री विश्वकर्मा योजना, "
+        "स्वरोजगार, ऋण, लोन, व्यवसाय, उद्यमिता, "
+        "बैंक, वित्तीय सहायता, सरकारी सब्सिडी।"
+    )
+
     segments, info = model.transcribe(
         audio,
         language=language,
@@ -78,7 +89,8 @@ def transcribe_audio(audio_path, language=None):
         best_of=5,
         temperature=0,
         vad_filter=True,
-        condition_on_previous_text=False
+        condition_on_previous_text=False,
+        initial_prompt=initial_prompt
     )
 
     text = " ".join(
@@ -87,6 +99,7 @@ def transcribe_audio(audio_path, language=None):
     )
 
     return text.strip()
+
 
 
 if __name__ == "__main__":

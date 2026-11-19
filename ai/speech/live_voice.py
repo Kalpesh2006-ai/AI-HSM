@@ -1,3 +1,4 @@
+
 import sounddevice as sd
 import soundfile as sf
 
@@ -16,15 +17,7 @@ INPUT_AUDIO = "ai/speech/user_question.wav"
 OUTPUT_AUDIO = "ai/speech/answer.wav"
 
 
-def record_audio():
-
-    print("\n" + "=" * 60)
-    print("🎤 AI-HSM VOICE ASSISTANT")
-    print("=" * 60)
-
-    duration = int(
-        input("\nEnter recording duration in seconds: ")
-    )
+def record_audio(duration):
 
     print("\n📱 Phone microphone connected")
     print("🎤 Recording started...")
@@ -40,107 +33,129 @@ def record_audio():
 
     sd.wait()
 
-    sf.write(
-        INPUT_AUDIO,
-        audio,
-        SAMPLE_RATE
-    )
+    sf.write(INPUT_AUDIO, audio, SAMPLE_RATE)
 
     print("✅ Recording completed.")
 
 
-def main():
-
-    # --------------------------------------------------
-    # 1. RECORD QUESTION
-    # --------------------------------------------------
-
-    record_audio()
-
-
-    # --------------------------------------------------
-    # 2. SPEECH TO TEXT
-    # --------------------------------------------------
-
-    print("\n[1] Converting speech to text...")
-
-    question = transcribe_audio(
-        INPUT_AUDIO,
-        language="hi"
-    )
-
-    print("\n📝 Transcribed Question:")
-    print(question)
-
-
-    # --------------------------------------------------
-    # 3. RAG + GEMINI
-    # --------------------------------------------------
-
-    print("\n[2] Searching government knowledge base...")
-
-    result = ask_question(question)
-
-    answer = result["answer"]
-
-    print("\n🤖 AI Answer:")
-    print(answer)
-
-
-    # --------------------------------------------------
-    # 4. TEXT TO SPEECH
-    # --------------------------------------------------
-
-    print("\n[3] Converting AI answer to speech...")
-
-    text_to_speech(
-        answer,
-        OUTPUT_AUDIO
-    )
-
-    print("\n🔊 Voice answer created:")
-    print(OUTPUT_AUDIO)
-
-
-    # --------------------------------------------------
-    # 4.5. PLAY AI ANSWER
-    # --------------------------------------------------
-
-    print("\n🔊 Playing AI answer...")
+def play_audio():
 
     audio, sample_rate = sf.read(
         OUTPUT_AUDIO,
         dtype="float32"
     )
 
-    sd.play(
-        audio,
-        sample_rate
-    )
-
+    sd.play(audio, sample_rate)
     sd.wait()
 
     print("✅ AI answer playback completed.")
 
 
-    # --------------------------------------------------
-    # 5. SOURCES
-    # --------------------------------------------------
+def display_sources(sources):
 
     print("\n" + "=" * 60)
     print("SOURCES")
     print("=" * 60)
 
-    for source in result["sources"]:
-
+    for source in sources:
         print(
             f"- {source['source']} | "
             f"Page {source['page']}"
         )
 
 
+def main():
+
     print("\n" + "=" * 60)
-    print("✅ AI-HSM PIPELINE COMPLETED")
+    print("🎤 AI-HSM CONTINUOUS VOICE ASSISTANT")
+    print("=" * 60)
+
+    print("\nYou can ask multiple questions.")
+    print("Say 'बंद करो' or 'exit' to stop.")
+
+    try:
+        duration = int(
+            input("\nEnter recording duration in seconds: ")
+        )
+
+        if duration <= 0:
+            print("❌ Recording duration must be greater than zero.")
+            return
+
+    except ValueError:
+        print("❌ Please enter a valid number.")
+        return
+
+    try:
+        while True:
+
+            print("\n" + "-" * 60)
+            print("🎤 Waiting for your question...")
+            print("-" * 60)
+
+            # 1. RECORD QUESTION
+            record_audio(duration)
+
+            # 2. SPEECH TO TEXT
+            print("\n[1] Converting speech to text...")
+
+            question = transcribe_audio(
+                INPUT_AUDIO,
+                language="hi"
+            )
+
+            print("\n📝 Transcribed Question:")
+            print(question)
+
+            if not question.strip():
+                print("\n⚠️ No speech detected. Please try again.")
+                continue
+
+            # 3. CHECK EXIT COMMAND
+            exit_commands = [
+                "बंद करो",
+                "बंद कर दो",
+                "बंद",
+                "exit",
+                "stop"
+            ]
+
+            if any(
+                command in question.lower()
+                for command in exit_commands
+            ):
+                print("\n👋 Voice assistant stopped.")
+                break
+
+            # 4. RAG + GEMINI
+            print("\n[2] Searching government knowledge base...")
+
+            result = ask_question(question)
+            answer = result["answer"]
+
+            print("\n🤖 AI Answer:")
+            print(answer)
+
+            # 5. TEXT TO SPEECH
+            print("\n[3] Converting AI answer to speech...")
+
+            text_to_speech(answer, OUTPUT_AUDIO)
+
+            # 6. PLAY AI ANSWER
+            print("\n🔊 Playing AI answer...")
+            play_audio()
+
+            # 7. DISPLAY SOURCES
+            display_sources(result["sources"])
+
+            print("\n✅ Question completed.")
+            print("You can ask another question now.")
+
+    except KeyboardInterrupt:
+        print("\n\n👋 AI-HSM voice assistant stopped by user.")
+
+    print("\n" + "=" * 60)
+    print("AI-HSM SESSION ENDED")
     print("=" * 60)
 
 

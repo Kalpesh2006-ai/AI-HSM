@@ -120,4 +120,7 @@ desktop.ini
 # Generated audio and local backups
 ai/speech/*.wav
 *.backup
-*.bak
+*.bak# Preserve existing ChromaDB database for deployment
+!rag/government_schemes/vector_db/
+!rag/government_schemes/vector_db/**
+!rag/government_schemes/vector_db/chroma.sqlite3

@@ -1,3 +1,6 @@
+
+from collections import Counter
+
 from langchain_chroma import Chroma
 
 from ai.rag.config import VECTOR_DB_PATH, COLLECTION_NAME
@@ -6,9 +9,7 @@ from ai.rag.query_router import expand_query
 
 
 def get_vector_store():
-    """
-    Load the existing Chroma vector database.
-    """
+    """Load the existing Chroma vector database."""
 
     embeddings = get_embeddings()
 
@@ -22,9 +23,7 @@ def get_vector_store():
 
 
 def get_retriever():
-    """
-    Return the standard retriever.
-    """
+    """Return the standard retriever."""
 
     vector_store = get_vector_store()
 
@@ -35,149 +34,181 @@ def get_retriever():
 
 def retrieve_documents(question):
     """
-    Retrieve relevant documents using the query router.
-
-    Current government-scheme routing remains supported.
-
-    The retrieval system is now designed around the
-    broader metadata structure:
-
-        category
-        topic
-        scheme
-
-    This allows future knowledge categories such as:
-
-        entrepreneurship
-        digital_skills
-        digital_marketing
-        financial_literacy
-        business_compliance
-        maharashtra
+    Retrieve relevant documents using query expansion,
+    scheme filtering, and source-diverse ranking.
     """
 
     vector_store = get_vector_store()
 
     routing_result = expand_query(question)
 
-    expanded_queries = routing_result[
-        "expanded_queries"
-    ]
-
-    detected_schemes = routing_result.get(
-        "detected_schemes",
-        []
+    expanded_queries = list(
+        routing_result.get("expanded_queries", [])
     )
 
-    detected_scheme = (
-        detected_schemes[0]
-        if detected_schemes
-        else None
+    detected_schemes = routing_result.get(
+        "detected_schemes", []
+    )
+
+    women_related = routing_result.get(
+        "women_related", False
     )
 
     all_results = []
 
-    for query in expanded_queries:
+    # --------------------------------------------------
+    # 1. Women's entrepreneurship retrieval
+    # --------------------------------------------------
 
-        # ---------------------------------------------
-        # GOVERNMENT SCHEME FILTER
-        # ---------------------------------------------
+    if women_related:
 
-        if detected_scheme:
+        targeted_searches = [
+            (
+                "PMEGP",
+                "PMEGP women entrepreneurs special category subsidy "
+                "lower beneficiary contribution",
+                {"scheme": "pmegp"}
+            ),
+            (
+                "MUDRA",
+                "MUDRA loans women entrepreneurs loan accounts "
+                "business financial assistance",
+                {"scheme": "mudra"}
+            ),
+            (
+                "DAY-NRLM",
+                "DAY NRLM rural women self help groups "
+                "livelihood enterprise financial inclusion",
+                {"scheme": "day_nrlm"}
+            ),
+            (
+                "PMFME",
+                "PMFME women self help groups food processing "
+                "micro enterprises subsidy support",
+                {"scheme": "pmfme"}
+            ),
+            (
+                "UMED",
+                "UMED Maharashtra State Rural Livelihoods Mission "
+                "annual action plan women SHG entrepreneurs "
+                "Lakhpati Didi",
+                {"scheme": "maharashtra_schemes"}
+            )
+        ]
 
-            results = (
-                vector_store
-                .similarity_search_with_score(
-                    query,
-                    k=4,
-                    filter={
-                        "scheme": detected_scheme
-                    }
-                )
+        for name, query, metadata_filter in targeted_searches:
+
+            results = vector_store.similarity_search_with_score(
+                query,
+                k=4,
+                filter=metadata_filter
             )
 
-        # ---------------------------------------------
-        # GENERAL KNOWLEDGE RETRIEVAL
-        # ---------------------------------------------
+            all_results.extend(results)
 
-        else:
+        # Additional unfiltered search for women's PMEGP evidence
+        # in the MSME Annual Report.
+        general_women_queries = [
+            "women entrepreneurs PMEGP higher subsidy "
+            "lower own contribution MSME Annual Report",
 
-            results = (
-                vector_store
-                .similarity_search_with_score(
-                    query,
-                    k=4
-                )
+            "PMEGP number of women entrepreneur projects "
+            "assisted government annual report"
+        ]
+
+        for query in general_women_queries:
+
+            results = vector_store.similarity_search_with_score(
+                query,
+                k=3
             )
 
-        all_results.extend(results)
+            all_results.extend(results)
 
-    # ---------------------------------------------
-    # GLOBAL RELEVANCE SORTING
-    # ---------------------------------------------
+    # --------------------------------------------------
+    # 2. Scheme-specific retrieval
+    # --------------------------------------------------
 
-    all_results.sort(
-        key=lambda item: item[1]
-    )
+    elif detected_schemes:
 
-    # ---------------------------------------------
-    # REMOVE DUPLICATES
-    # ---------------------------------------------
+        if "pm_vishwakarma" in detected_schemes:
+
+            expanded_queries.extend([
+                "PM Vishwakarma scheme objective traditional artisans craftspeople",
+                "PM Vishwakarma support for traditional workers and artisans",
+                "PM Vishwakarma 18 traditional trades skill training toolkit incentive",
+                "PM Vishwakarma scheme benefits collateral free credit assistance"
+            ])
+
+        for scheme in detected_schemes:
+
+            for query in expanded_queries:
+
+                results = vector_store.similarity_search_with_score(
+                    query,
+                    k=5,
+                    filter={"scheme": scheme}
+                )
+
+                all_results.extend(results)
+
+    # --------------------------------------------------
+    # 3. General retrieval
+    # --------------------------------------------------
+
+    else:
+
+        for query in expanded_queries:
+
+            results = vector_store.similarity_search_with_score(
+                query,
+                k=5
+            )
+
+            all_results.extend(results)
+
+    # Lower distance means a better match.
+    all_results.sort(key=lambda item: item[1])
+
+    # --------------------------------------------------
+    # 4. Remove duplicates and balance source documents
+    # --------------------------------------------------
 
     unique_documents = []
-
     seen = set()
+    source_counts = Counter()
+
+    max_per_source = 2
+    max_documents = 8
 
     for document, score in all_results:
 
-        source = document.metadata.get(
-            "source",
-            ""
-        )
+        metadata = document.metadata
 
-        page = document.metadata.get(
-            "page",
-            ""
-        )
-
-        category = document.metadata.get(
-            "category",
-            ""
-        )
-
-        topic = document.metadata.get(
-            "topic",
-            ""
-        )
-
-        scheme = document.metadata.get(
-            "scheme",
-            ""
-        )
-
-        content = document.page_content
+        source = metadata.get("source", "unknown")
 
         document_id = (
             source,
-            page,
-            category,
-            topic,
-            scheme,
-            content
+            metadata.get("page", ""),
+            metadata.get("category", ""),
+            metadata.get("topic", ""),
+            metadata.get("scheme", ""),
+            document.page_content
         )
 
-        if document_id not in seen:
+        if document_id in seen:
+            continue
 
-            seen.add(document_id)
+        seen.add(document_id)
 
-            unique_documents.append(
-                document
-            )
+        # Limit repeated chunks from the same PDF.
+        if source_counts[source] >= max_per_source:
+            continue
 
-    # ---------------------------------------------
-    # RETURN TOP RESULTS
-    # ---------------------------------------------
+        unique_documents.append(document)
+        source_counts[source] += 1
 
-    top_documents = unique_documents[:5]
+        if len(unique_documents) >= max_documents:
+            break
 
-    return top_documents
+    return unique_documents
